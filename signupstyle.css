@@ -1,0 +1,120 @@
+body{
+    margin: 0vh;
+    padding: 0vh;
+    background: white;
+    background-size: cover;
+    color: black;
+    font-size: 2.4vh;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+#login-box{
+    position: relative;
+    margin: 7% auto;
+    height: 60.8vh;
+    width: 91vh;
+    background: #fff;
+    box-shadow: 0vh 0.3vh 0.6vh rgba(0, 0,0, 0.6);
+}
+.left{
+    position: absolute;
+    top: 0vh;
+    left: 0vh;
+    box-sizing: border-box;
+    padding: 6vh;
+    width: 45.6vh;
+    height: 60.8vh;
+}
+h1
+{
+    margin: 0vh 0vh 3.04vh 0vh;
+    font-weight: 300;
+    font-size: 4.2vh;
+}
+input[type="text"],input[type="password"],input[type="email"]
+{
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 3vh;
+    padding: 0.6vh;
+    width: 33.4vh;
+    height: 4.9vh;
+    border: none;
+    outline: none;
+    border-bottom: 0.15vh solid #aaa;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 2.3vh;
+    transition: 0.2s ease;
+}
+input[type="submit"]
+{
+    margin-bottom: 4.2vh;
+    width: 18.2vh;
+    height: 4.8vh;
+    background: rgb(219, 34, 34);
+    border: none;
+    border-radius: 0.3vh;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+input[type="submit"]:hover,input[type="submit"]:focus{
+    background: rgb(247, 15, 15);
+    transition: 0.2s ease;
+}
+.right{
+    position: absolute;
+    top: 0vh;
+    right: 0vh;
+    box-sizing: border-box;
+    padding: 6vh;
+    width: 45.6vh;
+    height: 60.8vh;
+    background-image: url(https://cdn.stocksnap.io/img-thumbs/960w/abstract-background_0SRRVNMKBX.jpg) ;
+    background-size: cover;
+    background-position: center;
+}
+.right .signinwith{
+    display: block;
+    margin-bottom: 6.1vh;
+    font-size: 4.3vh;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0vh 0.3vh 0.7vh rgba(0, 0,0, 0.6);
+}
+button.social{
+    margin-bottom: 3.1vh;
+    width: 34vh;
+    height: 5.5vh;
+    border: none;
+    border-radius: 0.3;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 500;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.facebook{
+    background: #32508e;
+}
+.google{
+    background: #dd4b39;
+}
+.twitter{
+    background: #55acee;
+}
+.next{
+    position: absolute;
+    top: 52vh;
+    left: 6.2vh;   
+}
+.next a{
+    color: black;
+}
+.next a:hover{
+    color: red;
+}

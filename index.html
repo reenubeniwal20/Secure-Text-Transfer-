@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSTT - Explore the World</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comforter+Brush&family=Heebo:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#">
+        <h1 class="logo">OSTT</h1>
+      </a>
+
+      <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+        <ion-icon name="menu-outline" class="open"></ion-icon>
+        <ion-icon name="close-outline" class="close"></ion-icon>
+      </button>
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="index.html" class="navbar-link">HOME</a>
+          </li>
+          <li>
+            <a href="about.html" class="navbar-link">ABOUT US</a>
+          </li>
+          <li>
+            <a href="contact.html" class="navbar-link">CONTACT US</a>
+          </li>
+
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero"
+        style="background-image: url('./assets/images/hero-bg-bottom.png') url('./assets/images/hero-bg-top.png')">
+        <div class="container">
+
+          <img src="./assets/images/shape-1.png" width="61" height="61" alt="Vector Shape" class="shape shape-1">
+
+          <img src="./assets/images/shape-2.png" width="56" height="74" alt="Vector Shape" class="shape shape-2">
+
+          <img src="./assets/images/shape-3.png" width="57" height="72" alt="Vector Shape" class="shape shape-3">
+
+          <div class="hero-content">
+
+            <p class="section-subtitle">"Seamless sharing, effortless transfer - thanks to the cloud."
+            </p>
+
+            <h2 class="hero-title">Trusted text transfer</h2>
+
+            <p class="hero-text">
+              Wherever you are, whatever you need, the cloud delivers your text.
+            </p>
+
+            <div class="btn-group">
+              <!DOCTYPE html>
+<script src = "https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
+<script>
+    var pubnub = new PubNub({
+        publishKey : 'pub-c-c5729556-f3ea-48d2-84b5-875606e55a93',
+        subscribeKey : 'sub-c-301cc7d0-0003-41f1-9dfc-2b97cc6514b1'
+    });
+    function sendmessage(txt) {
+        pubnub.publish({
+            channel : "msg",
+            message : {
+                text:txt 
+            }
+        })
+    }
+    function encrypt(message, key) {
+        let result = "";
+        for (let i = 0; i < message.length; i++) 
+        {
+            let char = message.charCodeAt(i);
+            if (char >= 65 && char <= 90) 
+            {
+                char = ((char - 65 + key) % 26) + 65;
+            } 
+            else if (char >= 97 && char <= 122) 
+            {
+            char = ((char - 97 + key) % 26) + 97;
+            }
+        result += String.fromCharCode(char);
+        }
+        return result;
+    }
+    function decrypt(message,key) {
+        return encrypt(message, 26 - key);
+    }
+    pubnub.addListener({ 
+        message : function(m) {
+            let encryptmessage = encrypt(m.message.text,3);
+            document.getElementById("newmsgs").innerHTML+="<br> Encypted Message : "+ encrypt(m.message.text,3);
+            document.getElementById("newmsgs").innerHTML+="<br> Decypted Message : "+ decrypt(encryptmessage,3); 
+        }
+    });
+    pubnub.subscribe({
+        channels : ["msg"] 
+    });
+    function sendinput(){
+        sendmessage(document.getElementById("message").value);
+        document.getElementById("message").value="";
+    }
+</script>
+<input id = "message">
+
+<button onclick="sendinput()">Send<br></button>
+<div id="newmsgs"></div>
+            </div>
+
+          </div>
+
+          <figure class="hero-banner">
+            <img src="./assets/images/hero-banner.png" width="686" height="812" loading="lazy" alt="hero banner"
+              class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #DESTINATION
+      -->
+
+      <section class="section destination">
+        <div class="container">
+
+          <p class="section-subtitle">Services</p>
+
+          <h2 class="h2 section-title">Choose Your Way</h2>
+
+          <ul class="destination-list">
+
+            <li class="w-50">
+              <a href="#" class="destination-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/destination-1.jpg" width="1140" height="1100" loading="lazy"
+                    alt="sending text" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Text</p>
+
+                  <h3 class="h3 card-title">Texting</h3>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="w-50">
+              <a href="#" class="destination-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/destination-2.jpg" width="1140" height="1100" loading="lazy"
+                    alt="sending image" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Image</p>
+
+                  <h3 class="h3 card-title">Sending Image</h3>
+                </div>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="destination-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/destination-3.jpg" width=1110 height=480 loading="lazy"
+                    alt="sendning audio" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Audio</p>
+
+                  <h3 class="h3 card-title">Sending Audio</h3>
+                </div>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="destination-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/destination-4.jpg" width="1110" height="480" loading="lazy"
+                    alt="sending video" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Video</p>
+
+                  <h3 class="h3 card-title">Sending Video</h3>
+                </div>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="destination-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/destination-5.jpg" width="1110" height="480" loading="lazy"
+                    alt="sending file" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">File</p>
+
+                  <h3 class="h3 card-title">Sending File</h3>
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #POPULAR
+      -->
+
+      <section class="section popular">
+        <div class="container">
+
+          <p class="section-subtitle">Featured Services</p>
+
+          <h2 class="h2 section-title">Most Popular Ones</h2>
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Kuala Lumpur, Malaysia" class="img-cover">
+                  </a>
+
+                  <span class="card-badge">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="P12D">500 words</time>
+                  </span>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-price">From $1</div>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+
+                      <data value="2">(2)</data>
+                    </div>
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">Transcend boundaries, transmit ideas - the power of online text transfer.</a>
+                  </h3>
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Kuala Lumpur, Malaysia" class="img-cover">
+                  </a>
+
+                  <span class="card-badge">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="P12D">1000 Words</time>
+                  </span>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-price">From $2.5</div>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+
+                      <data value="2">(2)</data>
+                    </div>
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">Unleash your words into the digital sky with cloud-based text transfer</a>
+                  </h3>
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Kuala Lumpur, Malaysia" class="img-cover">
+                  </a>
+
+                  <span class="card-badge">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="P12D">2000 Words</time>
+                  </span>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-price">From $5</div>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+
+                      <data value="2">(2)</data>
+                    </div>
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">Cloud-driven connectivity fuels the swift exchange of textual brilliance.</a>
+                  </h3>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about">
+        <div class="container">
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About Us</p>
+
+            <h2 class="h2 section-title">From fingertips to the cloud, we are here to help you</h2>
+
+            <p class="about-text">
+              “Harness the cloud's magic, watch your text travel and transform.”
+            </p>
+
+            <ul class="about-list">
+
+              <li class="about-item">
+
+                <div class="about-item-icon">
+                  <ion-icon name="compass"></ion-icon>
+                </div>
+
+                <div class="about-item-content">
+                  <h3 class="h3 about-item-title">Guide</h3>
+
+                  <p class="about-item-text">
+                    We provide exclusive services
+                  </p>
+                </div>
+
+              </li>
+
+              <li class="about-item">
+
+                <div class="about-item-icon">
+                  <ion-icon name="briefcase"></ion-icon>
+                </div>
+
+                <div class="about-item-content">
+                  <h3 class="h3 about-item-title">Friendly price</h3>
+
+                  <p class="about-item-text">
+                    At www.ostt.co we try to provide you the best servivces at lowest rate possible
+                  </p>
+                </div>
+
+              </li>
+
+              <li class="about-item">
+
+                <div class="about-item-icon">
+                  <ion-icon name="umbrella"></ion-icon>
+                </div>
+
+                <div class="about-item-content">
+                  <h3 class="h3 about-item-title">Reliable</h3>
+
+                  <p class="about-item-text">
+                    You can rely on us For your secure text transfer
+                  </p>
+                </div>
+
+              </li>
+
+            </ul>
+
+            <a href="#" class="btn btn-primary">Try Now</a>
+
+          </div>
+
+          <figure class="about-banner">
+            <img src="./assets/images/about-banner.png" width="756" height="842" loading="lazy" alt="" class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #BLOG
+      -->
+
+      <section class="section blog">
+        <div class="container">
+
+          <p class="section-subtitle">From The Blog Post</p>
+
+          <h2 class="h2 section-title">Latest News & Articles</h2>
+
+          <ul class="blog-list">
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Empower collaboration, harness the cloud for effortless text transmission." class="img-cover">
+                  </a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="author-wrapper">
+                      <figure class="author-avatar">
+                        <img src="./assets/images/author-avatar.png" width="30" height="30" alt="Jony bristow">
+                      </figure>
+
+                      <div>
+                        <a href="#" class="author-name">Xiuqing Lu, Zhenkuan Pan & Hequn Xian </a>
+
+                        <p class="author-title">Admin</p>
+                      </div>
+                    </div>
+
+                    <time class="publish-time" datetime="10:30">20 October 2020</time>
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">
+                      With the development of big data and cloud computing, more and...
+                    </a>
+                  </h3>
+
+                  <a href="https://journalofcloudcomputing.springeropen.com/articles/10.1186/s13677-020-00207-5" class="btn-link">
+                    <span>Read More</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Empower collaboration, harness the cloud for effortless text transmission" class="img-cover">
+                  </a>
+
+      
+
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="author-wrapper">
+                      <figure class="author-avatar">
+                        <img src="./assets/images/author-avatar.png" width="30" height="30" alt="Jony bristow">
+                      </figure>
+
+                      <div>
+                        <a href="#" class="author-name">Srushti Jadhav
+                        </a>
+
+                        <p class="author-title">Admin</p>
+                      </div>
+                    </div>
+
+                    <time class="publish-time" datetime="10:30">December 22, 2022 </time>
+
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">
+                      Advent of Cloud Computing has been a phenomenal phase in the...
+                    </a>
+                  </h3>
+
+                  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4398667" class="btn-link">
+                    <span>Read More</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/popular-1.jpg" width="740" height="518" loading="lazy"
+                      alt="Empower collaboration, harness the cloud for effortless text transmission" class="img-cover">
+                  </a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="author-wrapper">
+                      <figure class="author-avatar">
+                        <img src="./assets/images/author-avatar.png" width="30" height="30" alt="Jony bristow">
+                      </figure>
+
+                      <div>
+                        <a href="#" class="author-name">Rambabu Vatti</a>
+
+                        <p class="author-title">Admin</p>
+                      </div>
+                    </div>
+
+                    <time class="publish-time" datetime="10:30">10:30 AM</time>
+
+                  </div>
+
+                  <h3 class="card-title">
+                    <a href="#">
+                      The evolution of cloud computing is one of the major advance...
+                    </a>
+                  </h3>
+
+                  <a href="https://www.researchgate.net/publication/344591932_DATA_TRANSFER_MODEL_FOR_CLOUD_COMPUTING" class="btn-link">
+                    <span>Read More</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('./assets/images/footer-bg.png')">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Categories</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">TEXT</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">PICTURES</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">AUDIO</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FILE</a>
+          </li>
+
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Quick links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact</a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">Terms & Conditions</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Get a newsletter</p>
+
+          <p class="newsletter-text">
+            For the latest deals and tips, go no further than your inbox
+          </p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email" required placeholder="Email address" class="newsletter-input">
+
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <a href="#" class="logo">OSTT</a>
+
+        <p class="copyright">
+          &copy; 2022 <a href="#" class="copyright-link">OSTT</a>. All Rights Reserved
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top" data-go-top aria-label="Go To Top">
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </a>
+</body>
+
+</html>
